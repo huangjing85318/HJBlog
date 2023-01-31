@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://huangjing85318.github.io/HJBlog/README.html</loc>
+    <loc>http://www.cpwip.com/README.html</loc>
     
     <lastmod>2023-01-31</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://huangjing85318.github.io/HJBlog/about/index.html</loc>
+    <loc>http://www.cpwip.com/about/index.html</loc>
     
     <lastmod>2023-01-06</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://huangjing85318.github.io/HJBlog/2023/02/01/hello-world/</loc>
+    <loc>http://www.cpwip.com/2023/02/01/hello-world/</loc>
     
     <lastmod>1985-10-26</lastmod>
     
@@ -30,7 +30,7 @@
   
 
   <url>
-    <loc>https://huangjing85318.github.io/HJBlog</loc>
+    <loc>http://www.cpwip.com/</loc>
     <lastmod>2023-01-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>

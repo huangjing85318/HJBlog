@@ -1,4 +1,4 @@
-https://huangjing85318.github.io/HJBlog/README.html
-https://huangjing85318.github.io/HJBlog/about/index.html
-https://huangjing85318.github.io/HJBlog/2023/02/01/hello-world/
-https://huangjing85318.github.io/HJBlog
+http://www.cpwip.com/README.html
+http://www.cpwip.com/about/index.html
+http://www.cpwip.com/2023/02/01/hello-world/
+http://www.cpwip.com/
