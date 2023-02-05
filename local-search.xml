@@ -8,7 +8,7 @@
     <link href="/2023/02/05/2023020501/"/>
     <url>/2023/02/05/2023020501/</url>
     
-    <content type="html"><![CDATA[<H3>ArrarList和string</H3><H4>string转ArrarList</H4><p>    ArrayList b = new ArrayList(str.Split(','));</p><H4>ArrarList转string</H4><p>    string str= string.Join(",",(string[])list.ToArray(typeof(string)));</p><H3>ArrarList和string</H3><H4>ArrarList转string[]</H4><p>    string[] arrString =(string[])list.ToArray(typeof(string));</p><H4>ArrarList转string</H4><p>   ArrayList list = new ArrayList(new string[]{"111","222"});</p>]]></content>
+    <content type="html"><![CDATA[<H3>ArrarList和string</H3><H4>string转ArrarList</H4><p>    ArrayList b = new ArrayList(str.Split(','));</p><H4>ArrarList转string</H4><p>    string str= string.Join(",",(string[])list.ToArray(typeof(string)));</p><H3>ArrarList和string[]</H3><H4>ArrarList转string[]</H4><p>    string[] arrString =(string[])list.ToArray(typeof(string));</p><H4>string[]转ArrarList</H4><p>   ArrayList list = new ArrayList(new string[]{"111","222"});</p>]]></content>
     
     
     <categories>
