@@ -4,13 +4,54 @@
   
   
   <entry>
-    <title>Hello World</title>
+    <title>c# ArrarList和string string[]和ArrarList</title>
+    <link href="/2023/02/05/2023020501/"/>
+    <url>/2023/02/05/2023020501/</url>
+    
+    <content type="html"><![CDATA[<H3>ArrarList和string</H3><H4>string转ArrarList</H4><p>    ArrayList b = new ArrayList(str.Split(','));</p><H4>ArrarList转string</H4><p>    string str= string.Join(",",(string[])list.ToArray(typeof(string)));</p><H3>ArrarList和string</H3><H4>ArrarList转string[]</H4><p>    string[] arrString =(string[])list.ToArray(typeof(string));</p><H4>ArrarList转string</H4><p>   ArrayList list = new ArrayList(new string[]{"111","222"});</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>关于</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>关于</tag>
+      
+      <tag>网站介绍</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>我开了自己的博客了</title>
     <link href="/2023/02/01/hello-world/"/>
     <url>/2023/02/01/hello-world/</url>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<H2>初衷</H2>  <p>拥有属于自己的一个博客域名，分享一些技术开发的心得</p> <br> <p>     突然想自己弄一个博客了，感觉起步有点晚了，又新发现的博客组合Hexo+Github，所以照着网上搜的教程一步一步的实现， </p> <p>     我的域名是https://www.cpwip.com/是在华为云买的，前期看看博客的情况再是否需要购买独立的服务器 </p>]]></content>
     
     
+    <categories>
+      
+      <category>关于</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>关于</tag>
+      
+      <tag>网站介绍</tag>
+      
+    </tags>
     
   </entry>
   

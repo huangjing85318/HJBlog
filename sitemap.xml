@@ -2,7 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.cpwip.com/2023/02/05/2023020501/</loc>
+    
+    <lastmod>2023-02-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://www.cpwip.com/about/index.html</loc>
+    
+    <lastmod>2023-02-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.cpwip.com/2023/02/01/hello-world/</loc>
     
     <lastmod>2023-02-05</lastmod>
     
@@ -19,15 +37,6 @@
     <priority>0.6</priority>
   </url>
   
-  <url>
-    <loc>http://www.cpwip.com/2023/02/01/hello-world/</loc>
-    
-    <lastmod>1985-10-26</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
 
   <url>
     <loc>http://www.cpwip.com/</loc>
@@ -37,6 +46,27 @@
   </url>
 
   
+  <url>
+    <loc>http://www.cpwip.com/tags/%E5%85%B3%E4%BA%8E/</loc>
+    <lastmod>2023-02-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://www.cpwip.com/tags/%E7%BD%91%E7%AB%99%E4%BB%8B%E7%BB%8D/</loc>
+    <lastmod>2023-02-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
+  
+  <url>
+    <loc>http://www.cpwip.com/categories/%E5%85%B3%E4%BA%8E/</loc>
+    <lastmod>2023-02-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
 </urlset>
