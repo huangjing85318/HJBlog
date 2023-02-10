@@ -79,6 +79,13 @@
   </url>
   
   <url>
+    <loc>http://www.cpwip.com/tags/vue/</loc>
+    <lastmod>2023-02-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://www.cpwip.com/tags/%E6%83%85%E6%84%9F/</loc>
     <lastmod>2023-02-10</lastmod>
     <changefreq>weekly</changefreq>
@@ -87,13 +94,6 @@
   
   <url>
     <loc>http://www.cpwip.com/tags/%E8%AF%97%E6%AD%8C/</loc>
-    <lastmod>2023-02-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://www.cpwip.com/tags/vue/</loc>
     <lastmod>2023-02-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -109,14 +109,14 @@
   </url>
   
   <url>
-    <loc>http://www.cpwip.com/categories/%E5%BF%83%E5%B1%8B/</loc>
+    <loc>http://www.cpwip.com/categories/vue/</loc>
     <lastmod>2023-02-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://www.cpwip.com/categories/vue/</loc>
+    <loc>http://www.cpwip.com/categories/%E5%BF%83%E5%B1%8B/</loc>
     <lastmod>2023-02-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
