@@ -6,7 +6,7 @@
   <link href="http://www.cpwip.com/atom.xml" rel="self"/>
   
   <link href="http://www.cpwip.com/"/>
-  <updated>2023-02-10T13:44:55.851Z</updated>
+  <updated>2023-02-16T08:49:56.069Z</updated>
   <id>http://www.cpwip.com/</id>
   
   <author>
@@ -17,16 +17,60 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>vue3如何部署到windows服务器上</title>
+    <link href="http://www.cpwip.com/2023/02/16/2023021602/"/>
+    <id>http://www.cpwip.com/2023/02/16/2023021602/</id>
+    <published>2023-02-16T06:53:16.000Z</published>
+    <updated>2023-02-16T08:49:56.069Z</updated>
+    
+    <content type="html"><![CDATA[<H3>这里介绍部署到windows服务器上</H3><h4>部署到IIS</h4><p>1.生成部署的静态文件 </p> <p>在vite.config.js里配置输出文件的目录</p> <img src="/img/pic/20230216155545.png"><br> <p>在项目的目录内右键点击"Git Bash Here"<br>  <b>执行 npm run build</b>，生成的文件就要部署的文件了</p><p>2.部署到服务器的IIS</p><br><span>确认服务器是否安装了IIS，安装后在IIS里新建网站,物理目录指向部署的文件目录，就可以正常访问了。</span><h4>部署到Nginx </h4><p>1.安装Nginx</p><span>Nginx<a href="http://nginx.org/en/download.html" target="_parent">下载地址</a>我用1.23.3版本</span><br><span>下载后解压到部署的盘内，将vue项目打包后，把目录dist拷贝到html里面</span> <img src="/img/pic/20230216162341.png"><br> <img src="/img/pic/20230216162742.png"><br><p>2.配置Nginx</p><span>因为现在是把vue前端交给了Nginx代理，所以这里的端口号不一定是我们在vue项目中设置的端口号。这里的端口号必须是当前服务器开放的端口号。</span>server_name是服务器的外网ip地址， listen是开发的端口号，root配置项目的实际文件目录<br><img src="/img/pic/20230216163510.png"><br><p>启动Nginx</p><span>打开Nginx安装路径下的命令行</span><p><span>执行：start nginx</span><br><img src="/img/pic/20230216164806.png"><br><br><span>最后在浏览器输入地址和端口就可以访问了</span></p>]]></content>
+    
+    
+    <summary type="html">vue3如何部署到windows服务器上</summary>
+    
+    
+    
+    <category term="vue3" scheme="http://www.cpwip.com/categories/vue3/"/>
+    
+    
+    <category term="vue3" scheme="http://www.cpwip.com/tags/vue3/"/>
+    
+    <category term="nodejs" scheme="http://www.cpwip.com/tags/nodejs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C# 生成日志文件的方式</title>
+    <link href="http://www.cpwip.com/2023/02/16/2023021601/"/>
+    <id>http://www.cpwip.com/2023/02/16/2023021601/</id>
+    <published>2023-02-16T03:56:10.000Z</published>
+    <updated>2023-02-16T07:00:51.159Z</updated>
+    
+    <content type="html"><![CDATA[<H3>C# 生成日志文件的方式</H3><pre>    <span style="color: rgba(0, 0, 255, 1)">using</span><span style="color: rgba(0, 0, 0, 1)"> System.IO;</span>    <span style="color: rgba(0, 0, 255, 1)">using</span><span style="color: rgba(0, 0, 0, 1)"> System.Text;</span><pre><code class="hljs">&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;public static void NewLog(string message)&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;    &#123;&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;        try&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;        &#123;&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;            string path = AppDomain.CurrentDomain.BaseDirectory + &quot;Log&quot; + &quot;\\&quot;;&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;            if (!Directory.Exists(path))&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;                Directory.CreateDirectory(path);&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;            path = path + DateTime.Now.ToString(&quot;yyyy-MM-dd&quot;) + &quot;\\&quot;;&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;            if (!Directory.Exists(path))&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;                Directory.CreateDirectory(path);&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;            string logFileName = path + DateTime.Now.ToString(&quot;HH-00-00&quot;) + &quot;.log&quot;;&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;            using (TextWriter logFile = TextWriter.Synchronized(File.AppendText(logFileName)))&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;            &#123;&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;                logFile.WriteLine(DateTime.Now + &quot;\t&quot; + message);&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;                logFile.Flush();&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;                logFile.Close();&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;            &#125;&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;        &#125;&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;        catch (Exception ex)&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;        &#123;&lt;/span&gt;</code></pre><p><span style="color: rgba(0, 0, 255, 1)"></span><br>      <span style="color: rgba(0, 0, 255, 1)">      }</span><br>      <span style="color: rgba(0, 0, 255, 1)">  }</span><br></pre></p>]]></content>
+    
+    
+    <summary type="html">C# 生成日志文件的方式</summary>
+    
+    
+    
+    <category term="C#" scheme="http://www.cpwip.com/categories/C/"/>
+    
+    
+    <category term="C#" scheme="http://www.cpwip.com/tags/C/"/>
+    
+  </entry>
+  
+  <entry>
     <title>昨天的你</title>
     <link href="http://www.cpwip.com/2023/02/10/2023021002/"/>
     <id>http://www.cpwip.com/2023/02/10/2023021002/</id>
     <published>2023-02-10T11:52:53.000Z</published>
-    <updated>2023-02-10T13:44:55.851Z</updated>
+    <updated>2023-02-16T03:35:52.510Z</updated>
     
     <content type="html"><![CDATA[<p>我似乎记不清你的模样，</p><p>因为白天总是看见阳光，</p><p>黑夜里隐隐闪烁你的獠牙。</p><p>如果眼瞎了，是不是脑海里会总浮现你的面孔，</p><p>还有那双坚定的眼眸。</p><p>你应该一如既往地奔跑着，</p><p>前方有你的目标，后面还是有一双手推着吗？</p><p>还是你自己情愿如此疲惫不堪下去。</p><p>远行不是目的，目的是为了归来，归来时仍然从容，从容为了更好的远行。</p><P>孤独是因为没有人懂得你的苦心</P><p>爱情是这个世界上最脆弱的情感，容易被情绪左右，容易受旁言困惑，容易被诱惑困住，</p><P>所以才更容易失去信心，因此爱情才是最被世人所渴望的情感。</p><p>那时，像春天的一缕晨光，相见短暂，总能时时刻刻地去思念忧虑;</p<p>期间，像夏天的酷热暴雨，挥霍时光，即使浑浑噩噩也从不去争取;</p<p>此时，像冬天的午时温度，追寻幸福，难道缘起缘灭只能成为束缚。</p>]]></content>
     
     
-    <summary type="html">开始接触vue比较晚，上手的问题总是反反复复的出现，甚至还会被迫创建无数次项目</summary>
+    <summary type="html">我似乎记不清你的模样，因为白天总是看见阳光，黑夜里隐隐闪烁你的獠牙。</summary>
     
     
     
@@ -44,9 +88,9 @@
     <link href="http://www.cpwip.com/2023/02/10/2023021001/"/>
     <id>http://www.cpwip.com/2023/02/10/2023021001/</id>
     <published>2023-02-10T06:45:03.000Z</published>
-    <updated>2023-02-10T13:33:13.325Z</updated>
+    <updated>2023-02-16T03:35:03.296Z</updated>
     
-    <content type="html"><![CDATA[<H3>vue的使用经验</H3><h4>vue的常用命令</h4> <p><b>1.安装nodejs最新的长期维护版</b></p> <p>https://nodejs.org/zh-cn/<br></p> <p>根据安装的目录，检查设置的环境变量</p> <p><b>2.安装yarn</b></p> <p>右键nodejs 管理员身份运行，npm install -g yarn </p> <p>查看yarn 版本 yarn -v</p> <p><b>3.安装vue-cli</b></p> <p>输入 npm i -g @vue/cli<br>   或npm install -g @vue/cli@5.0.8<br>   查看vue 版本 vue --version<br></p><p><b>4.安装vite</p><p>输入：npm install -g vite</b>查询vite版本</b></p><p><b>5.建议重启一下电脑</b><br>  【如果需要获取github路径的vue项目，如果有package-lock.json则删除掉，执行npm install】<br>  【如果运行有错误执行语句 npm install --legacy-peer-deps element-ui --save】</p> <p><b>6.创建项目<b><br>    打开Nodejs命令窗口，执行vue ui,打开UI页面</p>    <img src="/img/20230210210936.png"><br>    <img src="/img/20230210210936.png"><br>    <img src="/img/20230210212554.png"><br>    <img src="/img/20230210212904.png"><br>]]></content>
+    <content type="html"><![CDATA[<H3>vue的使用经验</H3><P>开始接触vue比较晚，上手的问题总是反反复复的出现，甚至还会被迫创建无数次项目</P><h4>vue的常用命令</h4> <p><b>1.安装nodejs最新的长期维护版</b></p> <p>https://nodejs.org/zh-cn/<br></p> <p>根据安装的目录，检查设置的环境变量</p> <p><b>2.安装yarn</b></p> <p>右键nodejs 管理员身份运行，npm install -g yarn </p> <p>查看yarn 版本 yarn -v</p> <p><b>3.安装vue-cli</b></p> <p>输入 npm i -g @vue/cli<br>   或npm install -g @vue/cli@5.0.8<br>   查看vue 版本 vue --version<br></p><p><b>4.安装vite</p><p>输入：npm install -g vite</b>查询vite版本</b></p><p><b>5.建议重启一下电脑</b><br>  【如果需要获取github路径的vue项目，如果有package-lock.json则删除掉，执行npm install】<br>  【如果运行有错误执行语句 npm install --legacy-peer-deps element-ui --save】</p> <p><b>6.创建项目<b><br>    打开Nodejs命令窗口，执行vue ui,打开UI页面</p>    <img src="/img/pic/20230210210936.png"><br>    <img src="/img/pic/20230210210936.png"><br>    <img src="/img/pic/20230210212554.png"><br>    <img src="/img/pic/20230210212904.png"><br>]]></content>
     
     
     <summary type="html">开始接触vue比较晚，上手的问题总是反反复复的出现，甚至还会被迫创建无数次项目</summary>

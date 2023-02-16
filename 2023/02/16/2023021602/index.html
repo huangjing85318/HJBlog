@@ -14,31 +14,33 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="Hjing">
-  <meta name="keywords" content="C# vue .net javascript jquery css .net Core 物联网云服务">
+  <meta name="keywords" content="vue3">
   
-    <meta name="description" content="开始接触vue比较晚，上手的问题总是反反复复的出现，甚至还会被迫创建无数次项目">
+    <meta name="description" content="vue3如何部署到windows服务器上">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue3使用经验与问题总结">
-<meta property="og:url" content="http://www.cpwip.com/2023/02/10/2023021001/index.html">
+<meta property="og:title" content="vue3如何部署到windows服务器上">
+<meta property="og:url" content="http://www.cpwip.com/2023/02/16/2023021602/index.html">
 <meta property="og:site_name" content="忧于未形的个人技术交流博客">
-<meta property="og:description" content="开始接触vue比较晚，上手的问题总是反反复复的出现，甚至还会被迫创建无数次项目">
+<meta property="og:description" content="vue3如何部署到windows服务器上">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://www.cpwip.com/img/pic/20230210210936.png">
-<meta property="og:image" content="http://www.cpwip.com/img/pic/20230210210936.png">
-<meta property="og:image" content="http://www.cpwip.com/img/pic/20230210212554.png">
-<meta property="og:image" content="http://www.cpwip.com/img/pic/20230210212904.png">
-<meta property="article:published_time" content="2023-02-10T06:45:03.000Z">
-<meta property="article:modified_time" content="2023-02-16T03:35:03.296Z">
+<meta property="og:image" content="http://www.cpwip.com/img/pic/20230216155545.png">
+<meta property="og:image" content="http://www.cpwip.com/img/pic/20230216162341.png">
+<meta property="og:image" content="http://www.cpwip.com/img/pic/20230216162742.png">
+<meta property="og:image" content="http://www.cpwip.com/img/pic/20230216163510.png">
+<meta property="og:image" content="http://www.cpwip.com/img/pic/20230216164806.png">
+<meta property="article:published_time" content="2023-02-16T06:53:16.000Z">
+<meta property="article:modified_time" content="2023-02-16T08:49:56.069Z">
 <meta property="article:author" content="Hjing">
-<meta property="article:tag" content="vue">
+<meta property="article:tag" content="vue3">
+<meta property="article:tag" content="nodejs">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://www.cpwip.com/img/pic/20230210210936.png">
+<meta name="twitter:image" content="http://www.cpwip.com/img/pic/20230216155545.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>vue3使用经验与问题总结 - 忧于未形的个人技术交流博客</title>
+  <title>vue3如何部署到windows服务器上 - 忧于未形的个人技术交流博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -205,7 +207,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="vue3使用经验与问题总结"></span>
+            <span id="subtitle" data-typed-text="vue3如何部署到windows服务器上"></span>
           
         </div>
 
@@ -216,8 +218,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-10 14:45" pubdate>
-          2023年2月10日 下午
+        <time datetime="2023-02-16 14:53" pubdate>
+          2023年2月16日 下午
         </time>
       </span>
     
@@ -228,7 +230,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          437 字
+          434 字
         
       </span>
     
@@ -277,38 +279,40 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">vue3使用经验与问题总结</h1>
+            <h1 style="display: none">vue3如何部署到windows服务器上</h1>
             
             
               <div class="markdown-body">
                 
-                <H3>vue的使用经验</H3>
-<P>开始接触vue比较晚，上手的问题总是反反复复的出现，甚至还会被迫创建无数次项目</P>
-<h4>vue的常用命令</h4>
- <p><b>1.安装nodejs最新的长期维护版</b></p>
- <p>https://nodejs.org/zh-cn/<br></p>
- <p>根据安装的目录，检查设置的环境变量</p>
- <p><b>2.安装yarn</b></p>
- <p>右键nodejs 管理员身份运行，npm install -g yarn </p>
- <p>查看yarn 版本 yarn -v</p>
- <p><b>3.安装vue-cli</b></p>
- <p>输入 npm i -g @vue/cli<br>
-   或npm install -g @vue/cli@5.0.8<br>
-   查看vue 版本 vue --version<br>
-</p>
-<p><b>4.安装vite</p>
-<p>输入：npm install -g vite</b>
-查询vite版本</b>
-</p>
-<p><b>5.建议重启一下电脑</b><br>
-  【如果需要获取github路径的vue项目，如果有package-lock.json则删除掉，执行npm install】<br>
-  【如果运行有错误执行语句 npm install --legacy-peer-deps element-ui --save】</p>
- <p><b>6.创建项目<b><br>
-    打开Nodejs命令窗口，执行vue ui,打开UI页面</p>
-    <img src="/img/pic/20230210210936.png" srcset="/img/loading.gif" lazyload><br>
-    <img src="/img/pic/20230210210936.png" srcset="/img/loading.gif" lazyload><br>
-    <img src="/img/pic/20230210212554.png" srcset="/img/loading.gif" lazyload><br>
-    <img src="/img/pic/20230210212904.png" srcset="/img/loading.gif" lazyload><br>
+                <H3>这里介绍部署到windows服务器上</H3>
+
+<h4>部署到IIS</h4>
+<p>1.生成部署的静态文件 </p>
+ <p>在vite.config.js里配置输出文件的目录</p>
+ <img src="/img/pic/20230216155545.png" srcset="/img/loading.gif" lazyload><br>
+ <p>在项目的目录内右键点击"Git Bash Here"<br>
+  <b>执行 npm run build</b>，生成的文件就要部署的文件了</p>
+
+<p>2.部署到服务器的IIS</p><br>
+<span>确认服务器是否安装了IIS，安装后在IIS里新建网站,物理目录指向部署的文件目录，就可以正常访问了。</span>
+
+<h4>部署到Nginx </h4>
+<p>1.安装Nginx</p>
+<span>Nginx<a href="http://nginx.org/en/download.html" target="_parent">下载地址</a>我用1.23.3版本</span><br>
+<span>下载后解压到部署的盘内，将vue项目打包后，把目录dist拷贝到html里面</span>
+ <img src="/img/pic/20230216162341.png" srcset="/img/loading.gif" lazyload><br>
+ <img src="/img/pic/20230216162742.png" srcset="/img/loading.gif" lazyload><br>
+<p>2.配置Nginx</p>
+<span>
+因为现在是把vue前端交给了Nginx代理，所以这里的端口号不一定是我们在vue项目中设置的端口号。这里的端口号必须是当前服务器开放的端口号。</span>
+server_name是服务器的外网ip地址， listen是开发的端口号，root配置项目的实际文件目录<br>
+<img src="/img/pic/20230216163510.png" srcset="/img/loading.gif" lazyload><br>
+
+<p>启动Nginx</p>
+<span>打开Nginx安装路径下的命令行</span>
+
+<p><span>执行：start nginx</span><br><img src="/img/pic/20230216164806.png" srcset="/img/loading.gif" lazyload><br><br><span>最后在浏览器输入地址和端口就可以访问了</span></p>
+
                 
               </div>
             
@@ -326,7 +330,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/vue/" class="category-chain-item">vue</a>
+  <a href="/categories/vue3/" class="category-chain-item">vue3</a>
   
   
 
@@ -341,7 +345,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/vue/">#vue</a>
+        <a href="/tags/vue3/">#vue3</a>
+      
+        <a href="/tags/nodejs/">#nodejs</a>
       
     </div>
   
@@ -353,8 +359,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>vue3使用经验与问题总结</div>
-      <div>http://www.cpwip.com/2023/02/10/2023021001/</div>
+      <div>vue3如何部署到windows服务器上</div>
+      <div>http://www.cpwip.com/2023/02/16/2023021602/</div>
     </div>
     <div class="license-meta">
       
@@ -366,7 +372,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年2月10日</div>
+          <div>2023年2月16日</div>
         </div>
       
       
@@ -398,18 +404,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/10/2023021002/" title="昨天的你">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">昨天的你</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/05/2023020501/" title="c# ArrarList和string string[]和ArrarList">
-                        <span class="hidden-mobile">c# ArrarList和string string[]和ArrarList</span>
+                      <a href="/2023/02/16/2023021601/" title="C# 生成日志文件的方式">
+                        <span class="hidden-mobile">C# 生成日志文件的方式</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

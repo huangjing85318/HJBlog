@@ -4,6 +4,58 @@
   
   
   <entry>
+    <title>vue3如何部署到windows服务器上</title>
+    <link href="/2023/02/16/2023021602/"/>
+    <url>/2023/02/16/2023021602/</url>
+    
+    <content type="html"><![CDATA[<H3>这里介绍部署到windows服务器上</H3><h4>部署到IIS</h4><p>1.生成部署的静态文件 </p> <p>在vite.config.js里配置输出文件的目录</p> <img src="/img/pic/20230216155545.png"><br> <p>在项目的目录内右键点击"Git Bash Here"<br>  <b>执行 npm run build</b>，生成的文件就要部署的文件了</p><p>2.部署到服务器的IIS</p><br><span>确认服务器是否安装了IIS，安装后在IIS里新建网站,物理目录指向部署的文件目录，就可以正常访问了。</span><h4>部署到Nginx </h4><p>1.安装Nginx</p><span>Nginx<a href="http://nginx.org/en/download.html" target="_parent">下载地址</a>我用1.23.3版本</span><br><span>下载后解压到部署的盘内，将vue项目打包后，把目录dist拷贝到html里面</span> <img src="/img/pic/20230216162341.png"><br> <img src="/img/pic/20230216162742.png"><br><p>2.配置Nginx</p><span>因为现在是把vue前端交给了Nginx代理，所以这里的端口号不一定是我们在vue项目中设置的端口号。这里的端口号必须是当前服务器开放的端口号。</span>server_name是服务器的外网ip地址， listen是开发的端口号，root配置项目的实际文件目录<br><img src="/img/pic/20230216163510.png"><br><p>启动Nginx</p><span>打开Nginx安装路径下的命令行</span><p><span>执行：start nginx</span><br><img src="/img/pic/20230216164806.png"><br><br><span>最后在浏览器输入地址和端口就可以访问了</span></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>vue3</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>vue3</tag>
+      
+      <tag>nodejs</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>C# 生成日志文件的方式</title>
+    <link href="/2023/02/16/2023021601/"/>
+    <url>/2023/02/16/2023021601/</url>
+    
+    <content type="html"><![CDATA[<H3>C# 生成日志文件的方式</H3><pre>    <span style="color: rgba(0, 0, 255, 1)">using</span><span style="color: rgba(0, 0, 0, 1)"> System.IO;</span>    <span style="color: rgba(0, 0, 255, 1)">using</span><span style="color: rgba(0, 0, 0, 1)"> System.Text;</span><pre><code class="hljs">&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;public static void NewLog(string message)&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;    &#123;&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;        try&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;        &#123;&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;            string path = AppDomain.CurrentDomain.BaseDirectory + &quot;Log&quot; + &quot;\\&quot;;&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;            if (!Directory.Exists(path))&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;                Directory.CreateDirectory(path);&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;            path = path + DateTime.Now.ToString(&quot;yyyy-MM-dd&quot;) + &quot;\\&quot;;&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;            if (!Directory.Exists(path))&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;                Directory.CreateDirectory(path);&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;            string logFileName = path + DateTime.Now.ToString(&quot;HH-00-00&quot;) + &quot;.log&quot;;&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;            using (TextWriter logFile = TextWriter.Synchronized(File.AppendText(logFileName)))&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;            &#123;&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;                logFile.WriteLine(DateTime.Now + &quot;\t&quot; + message);&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;                logFile.Flush();&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;                logFile.Close();&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;            &#125;&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;        &#125;&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;        catch (Exception ex)&lt;/span&gt;&lt;span style=&quot;color: rgba(0, 0, 255, 1)&quot;&gt;        &#123;&lt;/span&gt;</code></pre><p><span style="color: rgba(0, 0, 255, 1)"></span><br>      <span style="color: rgba(0, 0, 255, 1)">      }</span><br>      <span style="color: rgba(0, 0, 255, 1)">  }</span><br></pre></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>C#</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>C#</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>昨天的你</title>
     <link href="/2023/02/10/2023021002/"/>
     <url>/2023/02/10/2023021002/</url>
@@ -35,7 +87,7 @@
     <link href="/2023/02/10/2023021001/"/>
     <url>/2023/02/10/2023021001/</url>
     
-    <content type="html"><![CDATA[<H3>vue的使用经验</H3><h4>vue的常用命令</h4> <p><b>1.安装nodejs最新的长期维护版</b></p> <p>https://nodejs.org/zh-cn/<br></p> <p>根据安装的目录，检查设置的环境变量</p> <p><b>2.安装yarn</b></p> <p>右键nodejs 管理员身份运行，npm install -g yarn </p> <p>查看yarn 版本 yarn -v</p> <p><b>3.安装vue-cli</b></p> <p>输入 npm i -g @vue/cli<br>   或npm install -g @vue/cli@5.0.8<br>   查看vue 版本 vue --version<br></p><p><b>4.安装vite</p><p>输入：npm install -g vite</b>查询vite版本</b></p><p><b>5.建议重启一下电脑</b><br>  【如果需要获取github路径的vue项目，如果有package-lock.json则删除掉，执行npm install】<br>  【如果运行有错误执行语句 npm install --legacy-peer-deps element-ui --save】</p> <p><b>6.创建项目<b><br>    打开Nodejs命令窗口，执行vue ui,打开UI页面</p>    <img src="/img/20230210210936.png"><br>    <img src="/img/20230210210936.png"><br>    <img src="/img/20230210212554.png"><br>    <img src="/img/20230210212904.png"><br>]]></content>
+    <content type="html"><![CDATA[<H3>vue的使用经验</H3><P>开始接触vue比较晚，上手的问题总是反反复复的出现，甚至还会被迫创建无数次项目</P><h4>vue的常用命令</h4> <p><b>1.安装nodejs最新的长期维护版</b></p> <p>https://nodejs.org/zh-cn/<br></p> <p>根据安装的目录，检查设置的环境变量</p> <p><b>2.安装yarn</b></p> <p>右键nodejs 管理员身份运行，npm install -g yarn </p> <p>查看yarn 版本 yarn -v</p> <p><b>3.安装vue-cli</b></p> <p>输入 npm i -g @vue/cli<br>   或npm install -g @vue/cli@5.0.8<br>   查看vue 版本 vue --version<br></p><p><b>4.安装vite</p><p>输入：npm install -g vite</b>查询vite版本</b></p><p><b>5.建议重启一下电脑</b><br>  【如果需要获取github路径的vue项目，如果有package-lock.json则删除掉，执行npm install】<br>  【如果运行有错误执行语句 npm install --legacy-peer-deps element-ui --save】</p> <p><b>6.创建项目<b><br>    打开Nodejs命令窗口，执行vue ui,打开UI页面</p>    <img src="/img/pic/20230210210936.png"><br>    <img src="/img/pic/20230210210936.png"><br>    <img src="/img/pic/20230210212554.png"><br>    <img src="/img/pic/20230210212904.png"><br>]]></content>
     
     
     <categories>
