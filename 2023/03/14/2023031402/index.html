@@ -14,33 +14,27 @@
   
   <meta name="theme-color" content="#2f4154">
   <meta name="author" content="Hjing">
-  <meta name="keywords" content="vue3">
+  <meta name="keywords" content="vue3 Vuex mutations">
   
-    <meta name="description" content="vue3如何部署到windows服务器上">
+    <meta name="description" content="理论上来说，每一个 Vue 组件实例都已经在“管理”它自己的响应式状态了">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue3如何部署到windows服务器上">
-<meta property="og:url" content="http://www.cpwip.com/2023/02/16/2023021602/index.html">
+<meta property="og:title" content="谈一谈Vuex中的mutations属性">
+<meta property="og:url" content="http://www.cpwip.com/2023/03/14/2023031402/index.html">
 <meta property="og:site_name" content="忧于未形的个人技术交流博客">
-<meta property="og:description" content="vue3如何部署到windows服务器上">
+<meta property="og:description" content="理论上来说，每一个 Vue 组件实例都已经在“管理”它自己的响应式状态了">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://www.cpwip.com/img/pic/20230216155545.png">
-<meta property="og:image" content="http://www.cpwip.com/img/pic/20230216162341.png">
-<meta property="og:image" content="http://www.cpwip.com/img/pic/20230216162742.png">
-<meta property="og:image" content="http://www.cpwip.com/img/pic/20230216163510.png">
-<meta property="og:image" content="http://www.cpwip.com/img/pic/20230216164806.png">
-<meta property="article:published_time" content="2023-02-16T06:53:16.000Z">
-<meta property="article:modified_time" content="2023-02-16T08:49:56.069Z">
+<meta property="article:published_time" content="2023-03-14T07:41:55.000Z">
+<meta property="article:modified_time" content="2023-03-14T08:05:06.957Z">
 <meta property="article:author" content="Hjing">
 <meta property="article:tag" content="vue3">
 <meta property="article:tag" content="nodejs">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://www.cpwip.com/img/pic/20230216155545.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>vue3如何部署到windows服务器上 - 忧于未形的个人技术交流博客</title>
+  <title>谈一谈Vuex中的mutations属性 - 忧于未形的个人技术交流博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -207,7 +201,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="vue3如何部署到windows服务器上"></span>
+            <span id="subtitle" data-typed-text="谈一谈Vuex中的mutations属性"></span>
           
         </div>
 
@@ -218,8 +212,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-02-16 14:53" pubdate>
-          2023年2月16日 下午
+        <time datetime="2023-03-14 15:41" pubdate>
+          2023年3月14日 下午
         </time>
       </span>
     
@@ -230,7 +224,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          434 字
+          2.6k 字
         
       </span>
     
@@ -241,7 +235,7 @@
         
         
         
-          4 分钟
+          22 分钟
         
       </span>
     
@@ -279,39 +273,89 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">vue3如何部署到windows服务器上</h1>
+            <h1 style="display: none">谈一谈Vuex中的mutations属性</h1>
             
             
               <div class="markdown-body">
                 
-                <H3>这里介绍部署到windows服务器上</H3>
+                 <h3><a name="t0"></a><a id="mutations_0"></a>一、mutations属性介绍</h3> 
+<blockquote> 
+ <p>是唯一一种方式来修改state中的状态的；在组件的自定义方法中，使用this.$store.<a href="/2023/03/14/2023031402/" target="_blank"   data-tit="commit" data-pretit="commit">commit</a>(‘对应mutations中的方法’, 新的值)方法，把新的值提交给mutations中相对应的方法，mutations属性中的每个方法中有两个参数，分比为state和payload；state其实就是vuex中的state属性，payload叫做mutations的载荷，其实就是传过来的值。一般payload传的是一个对象，这样可以包含多个字段并且记录的 mutation 会更易读：</p> 
+</blockquote> 
+<pre data-index="0" class="prettyprint">
+    <code class="prism language-javascript has-numbering" onclick="mdcp.copyCode(event)" style="position: unset;">
+        mutations<span>:</span> 
+        <span>&#123;<!-- --></span>
+  <span class="token function">increment</span><span>(</span>state<span>,</span> payload<span>)</span>
+   <span>&#123;<!-- --></span>
+    state<span>.</span>count <span >+=</span> payload<span>.</span>amount
+  <span>&#125;</span>
+<span>&#125;</span>
+</pre> 
+<pre data-index="1" class="prettyprint"><code class="prism language-javascript has-numbering" onclick="mdcp.copyCode(event)" style="position: unset;">store<span>.</span><span class="token function">commit</span><span>(</span><span class="token string">'increment'</span><span>,</span> <span>&#123;<!-- --></span>
+  amount<span>:</span> <span class="token number">10</span>
+<span>&#125;</span><span>)</span>
+</pre> 
+<h3><a name="t1"></a><a id="_17"></a>二、对象风格的提交方式</h3> 
+<p>提交 mutation 的另一种方式是直接使用包含 type 属性的对象：</p> 
+<pre data-index="2" class="prettyprint"><code class="prism language-javascript has-numbering" onclick="mdcp.copyCode(event)" style="position: unset;">store<span>.</span><span class="token function">commit</span><span>(</span><span>&#123;<!-- --></span>
+  type<span>:</span> <span class="token string">'increment'</span><span>,</span>
+  amount<span>:</span> <span class="token number">10</span>
+<span>&#125;</span><span>)</span>
+</pre> 
+<p>当使用对象风格的提交方式，整个对象都作为载荷传给 mutation 函数，因此 handler 保持不变：</p> 
+<pre data-index="3" class="prettyprint"><code class="prism language-javascript has-numbering" onclick="mdcp.copyCode(event)" style="position: unset;">mutations<span>:</span> <span>&#123;<!-- --></span>
+  <span class="token function">increment</span> <span>(</span>state<span>,</span> payload<span>)</span> <span>&#123;<!-- --></span>
+    state<span>.</span>count <span >+=</span> payload<span>.</span>amount
+  <span>&#125;</span>
+<span>&#125;</span>
+</pre> 
+<h3><a name="t2"></a><a id="_Mutation__37"></a>三、使用常量替代 Mutation 事件类型</h3> 
+<p>使用常量替代 mutation 事件类型在各种 Flux 实现中是很常见的模式。这样可以使 linter 之类的工具发挥作用，同时把这些常量放在单独的文件中可以让你的代码合作者对整个 app 包含的 mutation 一目了然：</p> 
+<pre data-index="4" class="prettyprint"><code class="prism language-javascript has-numbering" onclick="mdcp.copyCode(event)" style="position: unset;"><span class="token comment">// mutation-types.js</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token constant">SOME_MUTATION</span> <span >=</span> <span class="token string">'SOME_MUTATION'</span>
+</pre> 
+<pre data-index="5" class="prettyprint"><code class="prism language-javascript has-numbering" onclick="mdcp.copyCode(event)" style="position: unset;"><span class="token comment">// store.js</span>
+<span class="token keyword">import</span> Vuex <span class="token keyword">from</span> <span class="token string">'vuex'</span>
+<span class="token keyword">import</span> <span>&#123;<!-- --></span> <span class="token constant">SOME_MUTATION</span> <span>&#125;</span> <span class="token keyword">from</span> <span class="token string">'./mutation-types'</span>
+</pre> 
+<pre data-index="6" class="prettyprint"><code class="prism language-javascript has-numbering" onclick="mdcp.copyCode(event)" style="position: unset;"><span class="token keyword">const</span> store <span >=</span> <span class="token keyword">new</span> <span class="token class-name">Vuex<span>.</span>Store</span><span>(</span><span>&#123;<!-- --></span>
+  state<span>:</span> <span>&#123;<!-- --></span> <span >...</span> <span>&#125;</span><span>,</span>
+  mutations<span>:</span> <span>&#123;<!-- --></span>
+    <span class="token comment">// 我们可以使用 ES2015 风格的计算属性命名功能来使用一个常量作为函数名</span>
+    <span>[</span><span class="token constant">SOME_MUTATION</span><span>]</span> <span>(</span>state<span>)</span> <span>&#123;<!-- --></span>
+      <span class="token comment">// mutate state</span>
+    <span>&#125;</span>
+  <span>&#125;</span>
+<span>&#125;</span><span>)</span>
+</pre> 
+<blockquote> 
+ <p>用不用常量取决于你——在需要多人协作的大型项目中，这会很有帮助。但如果你不喜欢，你完全可以不这样做。</p> 
+</blockquote> 
+<h3><a name="t3"></a><a id="_Mutation__66"></a>四、 Mutation 必须是同步函数</h3> 
+<p>一条重要的原则就是要记住 mutation 必须是<strong>同步函数</strong>。为什么？请参考下面的例子：</p> 
+<pre data-index="7" class="prettyprint"><code class="prism language-javascript has-numbering" onclick="mdcp.copyCode(event)" style="position: unset;">mutations<span>:</span> <span>&#123;<!-- --></span>
+  <span class="token function">someMutation</span> <span>(</span>state<span>)</span> <span>&#123;<!-- --></span>
+    api<span>.</span><span class="token function">callAsyncMethod</span><span>(</span><span>(</span><span>)</span> <span >=&gt;</span> <span>&#123;<!-- --></span>
+      state<span>.</span>count<span >++</span>
+    <span>&#125;</span><span>)</span>
+  <span>&#125;</span>
+<span>&#125;</span>
+</pre> 
+<p>现在想象，我们正在 debug 一个 app 并且观察 devtool 中的 mutation 日志。每一条 mutation 被记录，devtools 都需要捕捉到前一状态和后一状态的快照。然而，在上面的例子中 mutation 中的异步函数中的回调让这不可能完成：因为当 mutation 触发的时候，回调函数还没有被调用，devtools 不知道什么时候回调函数实际上被调用——实质上任何在回调函数中进行的状态的改变都是不可追踪的。</p> 
+<h3><a name="t4"></a><a id="_Mutation_80"></a>五、在组件中提交 Mutation</h3> 
+<p>你可以在组件中使用 this.$store.commit(‘xxx’) 提交 mutation，或者使用 mapMutations 辅助函数将组件中的 methods 映射为 store.commit 调用（需要在根节点注入 store）。</p> 
+<pre data-index="8" class="set-code-hide prettyprint"><code class="prism language-javascript has-numbering" onclick="mdcp.copyCode(event)" style="position: unset;"><span class="token keyword">import</span> <span>&#123;<!-- --></span> mapMutations <span>&#125;</span> <span class="token keyword">from</span> <span class="token string">'vuex'</span>
 
-<h4>部署到IIS</h4>
-<p>1.生成部署的静态文件 </p>
- <p>在vite.config.js里配置输出文件的目录</p>
- <img src="/img/pic/20230216155545.png" srcset="/img/loading.gif" lazyload><br>
- <p>在项目的目录内右键点击"Git Bash Here"<br>
-  <b>执行 npm run build</b>，生成的文件就要部署的文件了</p>
-
-<p>2.部署到服务器的IIS</p><br>
-<span>确认服务器是否安装了IIS，安装后在IIS里新建网站,物理目录指向部署的文件目录，就可以正常访问了。</span>
-
-<h4>部署到Nginx </h4>
-<p>1.安装Nginx</p>
-<span>Nginx<a href="http://nginx.org/en/download.html" target="_parent">下载地址</a>我用1.23.3版本</span><br>
-<span>下载后解压到部署的盘内，将vue项目打包后，把目录dist拷贝到html里面</span>
- <img src="/img/pic/20230216162341.png" srcset="/img/loading.gif" lazyload><br>
- <img src="/img/pic/20230216162742.png" srcset="/img/loading.gif" lazyload><br>
-<p>2.配置Nginx</p>
-<span>
-因为现在是把vue前端交给了Nginx代理，所以这里的端口号不一定是我们在vue项目中设置的端口号。这里的端口号必须是当前服务器开放的端口号。</span>
-server_name是服务器的外网ip地址， listen是开发的端口号，root配置项目的实际文件目录<br>
-<img src="/img/pic/20230216163510.png" srcset="/img/loading.gif" lazyload><br>
-
-<p>启动Nginx</p>
-<span>打开Nginx安装路径下的命令行</span>
-
-<p><span>执行：start nginx</span><br><img src="/img/pic/20230216164806.png" srcset="/img/loading.gif" lazyload><br><br><span>最后在浏览器输入地址和端口就可以访问了</span></p>
+<p><span class="token keyword">export</span> <span class="token keyword">default</span> <span>&#123;<!-- --></span><br>  <span class="token comment">// …</span><br>  methods<span>:</span> <span>&#123;<!-- --></span><br>    <span >…</span><span class="token function">mapMutations</span><span>(</span><span>[</span><br>      <span class="token string">‘increment’</span><span>,</span> <span class="token comment">// 将 <code>this.increment()</code> 映射为 <code>this.$store.commit(&#39;increment&#39;)</code></span></p>
+<pre><code class="hljs">  &lt;span class=&quot;token comment&quot;&gt;// `mapMutations` 也支持载荷：&lt;/span&gt;
+  &lt;span class=&quot;token string&quot;&gt;&#39;incrementBy&#39;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 将 `this.incrementBy(amount)` 映射为 `this.$store.commit(&#39;incrementBy&#39;, amount)`&lt;/span&gt;
+&lt;span&gt;]&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;&lt;span&gt;,&lt;/span&gt;
+&lt;span &gt;...&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;mapMutations&lt;/span&gt;&lt;span&gt;(&lt;/span&gt;&lt;span&gt;&#123;&lt;!-- --&gt;&lt;/span&gt;
+  add&lt;span&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;increment&#39;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;// 将 `this.add()` 映射为 `this.$store.commit(&#39;increment&#39;)`&lt;/span&gt;
+&lt;span&gt;&#125;&lt;/span&gt;&lt;span&gt;)&lt;/span&gt;
+</code></pre>
+<p>  <span>}</span><br><span>}</span><br></pre></p>
 
                 
               </div>
@@ -359,8 +403,8 @@ server_name是服务器的外网ip地址， listen是开发的端口号，root�
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>vue3如何部署到windows服务器上</div>
-      <div>http://www.cpwip.com/2023/02/16/2023021602/</div>
+      <div>谈一谈Vuex中的mutations属性</div>
+      <div>http://www.cpwip.com/2023/03/14/2023031402/</div>
     </div>
     <div class="license-meta">
       
@@ -372,7 +416,7 @@ server_name是服务器的外网ip地址， listen是开发的端口号，root�
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年2月16日</div>
+          <div>2023年3月14日</div>
         </div>
       
       
@@ -404,18 +448,12 @@ server_name是服务器的外网ip地址， listen是开发的端口号，root�
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/02/25/2023031401/" title="Vue3的状态管理-Store，Vuex和Pinia的对比">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Vue3的状态管理-Store，Vuex和Pinia的对比</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/02/16/2023021601/" title="C# 生成日志文件的方式">
-                        <span class="hidden-mobile">C# 生成日志文件的方式</span>
+                      <a href="/2023/02/25/2023022501/" title="在vue3中如何使用Ant Design?">
+                        <span class="hidden-mobile">在vue3中如何使用Ant Design?</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
